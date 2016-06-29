@@ -62,6 +62,7 @@ function Controller(data){
     $(this.combo_box).on('change',sort_movies);
     
     this.load_movies();
+    this.adjust_content();
 };
 
 Controller.prototype.load_movies=function(){
@@ -86,6 +87,7 @@ Controller.prototype.sort_movies=function(){
             );
     
     this.load_movies();
+    this.adjust_content();
 };
 
 Controller.prototype.make_grid=function(){
@@ -98,4 +100,23 @@ Controller.prototype.make_list=function(){
     $(this.movies_div).attr("class", "list");
     $(this.grid_icon).attr("src", "images/grid.jpg");
     $(this.list_icon).attr("src", "images/list_pressed.jpg");
+};
+
+Controller.prototype.adjust_content=function(){
+    this.adjust_year();
+};
+
+Controller.prototype.adjust_year=function(){
+    for(var i=0; i < $("#movies").children().length; i++)
+    {
+        $("div.year").eq(i).text("("+$("div.year").eq(i).text()+")");
+    }
+};
+
+Controller.prototype.adjust_starring=function(){
+    
+};
+
+Controller.prototype.adjust_rating=function(){
+    
 };

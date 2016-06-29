@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : CJ
 */
 
-header, section, .icons
+.head, section, .icons
 {
     width: 95%;
     min-width: 250px;
@@ -20,21 +20,15 @@ header, section, .icons
     width: 50px;
 }
 
-.icons
+@font-face
 {
-    position: relative;
-    top: 10px;
-    height: 40px;
+    font-family: Oleo;
+    src: url(fonts/Oleo.woff);
 }
 
-.icons img
+.banner
 {
-    float: right;
-}
-
-.icons img:hover
-{
-    cursor: pointer;
+    font-family: Oleo;
 }
 
 input.text
@@ -70,6 +64,23 @@ div.sub_suggestions:hover
     background-color: gainsboro;
 }
 
+.icons
+{
+    position: relative;
+    top: 10px;
+    height: 40px;
+}
+
+.icons img
+{
+    float: right;
+}
+
+.icons img:hover
+{
+    cursor: pointer;
+}
+
 .grid
 {
     position: relative;
@@ -94,6 +105,15 @@ div.sub_suggestions:hover
     height: 188px;
 }
 
+.grid .hd, .list .hd
+{
+    position: absolute;
+    height: 30px;
+    width: 40px;
+    top: 15px;
+    left: 15px;
+}
+
 .grid .movie .title
 {
     position: absolute;
@@ -107,6 +127,7 @@ div.sub_suggestions:hover
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 15px;
 }
 
 .grid .year

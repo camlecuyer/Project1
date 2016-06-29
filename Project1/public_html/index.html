@@ -13,9 +13,9 @@ list.
         <script id="movie-template" type="text/html">
             <div class='movie'>
                 <img class='photo' src='{{photo}}'>
-                <img class='hd' src='HD.png' alt='{{HD}}'>
+                <img class='hd' src='images/HD.png' alt='{{HD}}'>
                 <div class='title'>{{title}}</div>
-                <div class='year'>({{year}})</div>
+                <div class='year'>{{year}}</div>
                 <div class='starring'>{{starring}}</div>
                 <div class='rating'>{{rating}}</div>
                 <div class='description'>{{description}}</div>
@@ -27,13 +27,15 @@ list.
         <script src="scripts/movie.js"></script>
     </head>
     <body>
-        <header class="search">
+        <div class="head">
             <img class="logo" alt="logo" title="logo" src="images/movie.png">
-            <p class="title">Rent a Movie</p>
-            <input class="text" id="field" type="text">
-            <div id="suggestions_box" class="suggestions"></div>
-            <button id="search_button">Search</button>
-        </header>
+            <div class="banner">Rent a Movie</div>
+            <div class="search">
+                <input class="text" id="field" type="text">
+                <div id="suggestions_box" class="suggestions"></div>
+                <button id="search_button">Search</button>
+            </div>
+        </div>
         <div class='icons'>
             <label for='combo_box'>Sort By:</label>
             <select id="combo_box">
