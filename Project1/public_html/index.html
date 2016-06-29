@@ -1,16 +1,48 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+<!--Project 1, Cameron L'Ecuyer 6/28/16
+This project creates a one page website that displays a list of movies.
+The user can search for movies, and change the display type for the movies
+list.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Movies</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles/movies.css">
+        <script id="movie-template" type="text/html">
+            <div class='movie'>
+                <img class='photo' src='{{photo}}'>
+                <img class='hd' src='HD.png' alt='{{HD}}'>
+                <div class='title'>{{title}}</div>
+                <div class='year'>({{year}})</div>
+                <div class='starring'>{{starring}}</div>
+                <div class='rating'>{{rating}}</div>
+                <div class='description'>{{description}}</div>
+            </div> 
+        </script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="scripts/htmlMaker.js"></script>
+        <script src="scripts/movies.js"></script>
+        <script src="scripts/movie.js"></script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <header class="search">
+            <img class="logo" alt="logo" title="logo" src="images/movie.png">
+            <p class="title">Rent a Movie</p>
+            <input class="text" id="field" type="text">
+            <div id="suggestions_box" class="suggestions"></div>
+            <button id="search_button">Search</button>
+        </header>
+        <div class='icons'>
+            <label for='combo_box'>Sort By:</label>
+            <select id="combo_box">
+                <option>Year</option>
+                <option>Rating</option>
+            </select>
+            <img id="list_icon" title="list" src="images/list.jpg">
+            <img id="grid_icon" title="grid" src="images/grid_pressed.jpg">
+        </div>
+        <section id="movies" class="grid"></section>
     </body>
 </html>

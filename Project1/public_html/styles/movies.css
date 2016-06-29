@@ -1,0 +1,159 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 28, 2016, 1:22:49 PM
+    Author     : CJ
+*/
+
+header, section, .icons
+{
+    width: 95%;
+    min-width: 250px;
+}
+
+.logo
+{
+    height: 50px;
+    width: 50px;
+}
+
+.icons
+{
+    position: relative;
+    top: 10px;
+    height: 40px;
+}
+
+.icons img
+{
+    float: right;
+}
+
+.icons img:hover
+{
+    cursor: pointer;
+}
+
+input.text
+{
+    color: gray;
+    border-width: 1px;
+    border-color: lightgray;
+    border-style: solid;
+    width: 150px;
+}
+
+div.suggestions
+{
+    position: absolute;
+    top: 25px;
+    z-index: 50;
+    border-color: lightgray;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    width: 150px;
+    overflow: auto;
+    display: none;
+}
+
+div.sub_suggestions
+{
+    width: 150px;
+}
+
+div.sub_suggestions:hover
+{
+    background-color: gainsboro;
+}
+
+.grid
+{
+    position: relative;
+}
+
+.grid .movie
+{
+    position: relative;
+    float: left;
+    margin: 30px 0px 0px 30px;
+    width: 200px;
+    height: 200px;
+}
+
+.grid .movie .photo, .list .movie .photo
+{
+    position: relative;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid lightgray;
+    width: 188px;
+    height: 188px;
+}
+
+.grid .movie .title
+{
+    position: absolute;
+    left: 6px;
+    bottom: 6px;
+    height: 40px;
+    width: 188px;
+    background-color: rgba(0,0,0,0.4);
+    color: white;
+    line-height: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.grid .year
+{
+    position: absolute;
+    background-color: rgba(0,0,0,0);
+    color: white;
+    left: 6px;
+    bottom: 8px;
+    height: 20px;
+    width: 188px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.grid .description, .grid .rating, .grid .starring
+{
+    display: none;
+}
+
+.list
+{
+    position: relative;
+}
+
+.list .movie
+{
+    position: relative;
+    display: block;
+    width: 70%;
+    height: 170px;
+    padding: 10px;
+    border-bottom: lightgray 1px dotted;
+}
+
+.list div.description, .list .year
+{
+    position: absolute;
+    top: 10px;
+    color: black;
+    left: 250px;
+    font-size: 15px;
+}
+
+.list .year
+{
+    top: 100px;
+    color: gray;
+    font-size: 15px;  
+}
