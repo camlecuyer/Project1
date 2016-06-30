@@ -61,8 +61,7 @@ function Controller(data){
     $(this.list_icon).on("click", make_list_function);
     $(this.combo_box).on('change',sort_movies);
     
-    this.load_movies();
-    this.adjust_content();
+    this.sort_movies();
 };
 
 Controller.prototype.load_movies=function(){
@@ -104,6 +103,8 @@ Controller.prototype.make_list=function(){
 
 Controller.prototype.adjust_content=function(){
     this.adjust_year();
+    this.adjust_hd();
+    this.adjust_rating();
 };
 
 Controller.prototype.adjust_year=function(){
@@ -113,10 +114,37 @@ Controller.prototype.adjust_year=function(){
     }
 };
 
-Controller.prototype.adjust_starring=function(){
-    
+Controller.prototype.adjust_hd=function(){
+    $("img.hd").each(function()
+    {
+        if($(this).prop("alt")=="false")
+        {
+            $(this).toggleClass("hd hd_hide");
+        }
+    });
 };
 
 Controller.prototype.adjust_rating=function(){
+    var numStars = 5;
     
+    for(var i=0; i < $("#movies").children().length; i++)
+    {
+        var rating=parseInt($("div.rating").eq(i).text());
+        $("div.rating").eq(i).text("");
+        var stars = "";
+        
+        for(var j=0; j < rating; j++)
+        {
+            stars += "<img class='star' src='images/gold_star.png'>";
+        }
+        
+        rating = numStars - rating;
+        
+        for(var j=0; j < rating; j++)
+        {
+            stars += "<img class='star' src='images/regular_star.png'>";
+        }
+        
+        $("div.rating").eq(i).html(stars);
+    }
 };

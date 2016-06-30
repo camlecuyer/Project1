@@ -1,46 +1,82 @@
 /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+
 */
 /* 
     Created on : Jun 28, 2016, 1:22:49 PM
     Author     : CJ
 */
 
-.head, section, .icons
+.head, section
 {
     width: 95%;
     min-width: 250px;
 }
 
-.logo
+.head
 {
+    background-color: #f2f2f2;
+    height: 50px;
+}
+
+.head .logo
+{
+    position: fixed;
     height: 50px;
     width: 50px;
+    top: 2px;
+    left: 10px;
 }
 
 @font-face
 {
     font-family: Oleo;
-    src: url(fonts/Oleo.woff);
+    src: url(../fonts/Oleo.woff);
 }
 
-.banner
+.head .banner
 {
+    position: fixed;
     font-family: Oleo;
+    top: 20px;
+    left: 80px;
+    width: auto;
 }
 
-input.text
+.head input.text
 {
+    position: fixed;
+    top: 20px;
+    left: 250px;
+    width: 50%;
+    max-width: 420px;
     color: gray;
     border-width: 1px;
     border-color: lightgray;
     border-style: solid;
-    width: 150px;
 }
 
-div.suggestions
+.head button
+{
+    position: fixed;
+    top: 20px;
+    left: 670px;
+    width: 50px;
+    font-family: "Times New Roman";
+    font-size: 15px;
+    text-align: center;
+    padding: 0px;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    color: white;
+    background-color: #0099FF;
+    background-image: -webkit-linear-gradient(#92cfde, #0099FF);
+    background-image: -moz-linear-gradient(#92cfde, #0099FF);
+    background-image: -ms-linear-gradient(#92cfde, #0099FF);
+    background-image: -o-linear-gradient(#92cfde, #0099FF);
+    background-image: linear-gradient(#92cfde, #0099FF);
+}
+
+.head .suggestions
 {
     position: absolute;
     top: 25px;
@@ -54,12 +90,12 @@ div.suggestions
     display: none;
 }
 
-div.sub_suggestions
+.head .sub_suggestions
 {
     width: 150px;
 }
 
-div.sub_suggestions:hover
+.head .sub_suggestions:hover
 {
     background-color: gainsboro;
 }
@@ -67,8 +103,10 @@ div.sub_suggestions:hover
 .icons
 {
     position: relative;
+    width: 90%;
+    height: 30px;
     top: 10px;
-    height: 40px;
+    left: 15px;
 }
 
 .icons img
@@ -84,6 +122,7 @@ div.sub_suggestions:hover
 .grid
 {
     position: relative;
+    top: 10px;
 }
 
 .grid .movie
@@ -105,13 +144,26 @@ div.sub_suggestions:hover
     height: 188px;
 }
 
-.grid .hd, .list .hd
+.grid .movie .hd
 {
     position: absolute;
     height: 30px;
     width: 40px;
     top: 15px;
     left: 15px;
+}
+
+.hd_hide
+{
+    display: none;
+}
+
+.grid .movie .title, .grid .movie .year
+{
+    transition: height 1s, background-color 0.5s;
+    -webkit-transition:  height 1s, background-color 0.5s;
+    -moz-transition:  height 1s, background-color 0.5s;
+    -o-transition:  height 1s, background-color 0.5s;
 }
 
 .grid .movie .title
@@ -130,7 +182,7 @@ div.sub_suggestions:hover
     font-size: 15px;
 }
 
-.grid .year
+.grid .movie .year
 {
     position: absolute;
     background-color: rgba(0,0,0,0);
@@ -143,7 +195,54 @@ div.sub_suggestions:hover
     text-align: center;
 }
 
-.grid .description, .grid .rating, .grid .starring
+.grid .movie .starring
+{
+    position: absolute;
+    left: 6px;
+    bottom: 6px;
+    color: transparent;
+    width: 188px;
+    height: 0px;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.grid .movie .star_label
+{
+    position: absolute;
+    left: 6px;
+    bottom: 6px;
+    background-color: rgba(0,0,0,0.7);
+    color: transparent;
+    width: 188px;
+    height: 0px;
+    font-weight: bold;
+}
+
+.grid .movie:hover .star_label
+{
+    height: 40px;
+    color: white;
+    line-height: 24px;
+}
+
+.grid .movie:hover .starring
+{
+    height: 20px;
+    color: white;
+}
+.grid .movie:hover .title
+{
+    background-color: rgba(0,0,0,0.6);
+    height: 120px;
+}
+
+.grid .movie:hover .year
+{
+    height: 100px;
+}
+
+.grid .movie .description, .grid .movie .rating, .grid .movie .rate_label
 {
     display: none;
 }
@@ -151,30 +250,104 @@ div.sub_suggestions:hover
 .list
 {
     position: relative;
+    top: 10px;
 }
 
 .list .movie
 {
     position: relative;
     display: block;
+    background-color: rgb(245,245,245);
     width: 70%;
-    height: 170px;
+    height: 260px;
     padding: 10px;
     border-bottom: lightgray 1px dotted;
 }
 
-.list div.description, .list .year
+.list .movie .photo
+{
+    float: left;
+}
+
+.list .movie .title
+{
+    position: relative;
+    display: inline;
+    margin: 0px 0px 0px 10px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.list .photo_container .hd
 {
     position: absolute;
-    top: 10px;
-    color: black;
-    left: 250px;
+    height: 30px;
+    width: 40px;
+    top: 20px;
+    left: 20px;
+}
+
+.list .movie .year
+{
+    position: relative;
+    display: inline;
+    line-height: 22px;
+    margin: 0px 0px 0px 5px;
+    color: gray;
     font-size: 15px;
 }
 
-.list .year
+.list .movie .title_container
 {
-    top: 100px;
-    color: gray;
-    font-size: 15px;  
+    position: relative;
+    float: left;
+    width: 450px;
+    margin: 0px 10px;
+}
+
+.list .movie .star_container, .list .movie .rate_container
+{
+    position: relative;
+    float: left;
+    width: 450px;
+    margin: 10px 10px;
+}
+
+.list .movie .description
+{
+    position: relative;
+    float: left;
+    margin: 0px 0px 0px 10px;
+    padding: 10px 0px 0px 10px;
+    display: block;
+    line-height: 1.5em;
+    background-color: rgb(236,255,255);
+    top: 10px;
+    color: black;
+    width: 450px;
+    font-size: 15px;
+}
+
+.list .rate_container .rating, .list .star_container .starring
+{
+    position: relative;
+    display: inline;
+    vertical-align: top;
+    margin: 0px 0px 0px 5px;
+}
+
+.list .star_container .star_label, .list .rate_container .rate_label
+{
+    position: relative;
+    display: inline;
+    margin: 0px 0px 0px 10px;
+    font-weight: bold;
+}
+
+.star
+{
+    height: 20px;
+    width: 20px;
+    padding: 0px 2px;
 }

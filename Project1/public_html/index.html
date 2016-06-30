@@ -12,12 +12,22 @@ list.
         <link rel="stylesheet" type="text/css" href="styles/movies.css">
         <script id="movie-template" type="text/html">
             <div class='movie'>
-                <img class='photo' src='{{photo}}'>
-                <img class='hd' src='images/HD.png' alt='{{HD}}'>
-                <div class='title'>{{title}}</div>
-                <div class='year'>{{year}}</div>
-                <div class='starring'>{{starring}}</div>
-                <div class='rating'>{{rating}}</div>
+                <div class='photo_container'>
+                    <img class='photo' src='{{photo}}'>
+                    <img class='hd' src='images/HD.png' alt='{{HD}}'>
+                </div>
+                <div class='title_container'>
+                    <div class='title'>{{title}}</div>
+                    <div class='year'>{{year}}</div>
+                </div>
+                <div class='star_container'>
+                    <div class='star_label'>Starring:</div>
+                    <div class='starring'>{{starring}}</div>
+                </div>
+                <div class='rate_container'>
+                    <div class='rate_label'>Rating:</div>
+                    <div class='rating'>{{rating}}</div>
+                </div>
                 <div class='description'>{{description}}</div>
             </div> 
         </script>
@@ -31,7 +41,7 @@ list.
             <img class="logo" alt="logo" title="logo" src="images/movie.png">
             <div class="banner">Rent a Movie</div>
             <div class="search">
-                <input class="text" id="field" type="text">
+                <input class="text" id="field" type="text" placeholder="Search for movies">
                 <div id="suggestions_box" class="suggestions"></div>
                 <button id="search_button">Search</button>
             </div>
