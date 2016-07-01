@@ -42,29 +42,36 @@
     width: auto;
 }
 
-.head input.text
+.head .search
 {
     position: fixed;
     top: 20px;
     left: 250px;
-    width: 50%;
+    width: 470px;
+    z-index: 100;
+}
+
+.head input.text
+{
+    width: 420px;
     max-width: 420px;
-    color: gray;
+    color: black;
     border-width: 1px;
     border-color: lightgray;
     border-style: solid;
+    margin: 0px;
 }
 
 .head button
 {
-    position: fixed;
-    top: 20px;
-    left: 670px;
+    position: absolute;
+    left: 420px;
     width: 50px;
     font-family: "Times New Roman";
     font-size: 15px;
     text-align: center;
     padding: 0px;
+    margin: 0px;
     border: none;
     border-radius: 0px 5px 5px 0px;
     color: white;
@@ -79,25 +86,26 @@
 .head .suggestions
 {
     position: absolute;
-    top: 25px;
-    z-index: 50;
+    top: 20px;
+    z-index: 100;
+    padding: 0px 5px;
     border-color: lightgray;
     background-color: white;
     border-style: solid;
     border-width: 1px;
-    width: 150px;
+    width: 470px;
     overflow: auto;
     display: none;
 }
 
 .head .sub_suggestions
 {
-    width: 150px;
+    width: 460px;
 }
 
 .head .sub_suggestions:hover
 {
-    background-color: gainsboro;
+    background-color: rgb(245,245,245);
 }
 
 .icons
@@ -132,6 +140,7 @@
     margin: 30px 0px 0px 30px;
     width: 200px;
     height: 200px;
+    z-index: 5;
 }
 
 .grid .movie .photo, .list .movie .photo
@@ -262,6 +271,7 @@
     height: 260px;
     padding: 10px;
     border-bottom: lightgray 1px dotted;
+    z-index: 5;
 }
 
 .list .movie .photo

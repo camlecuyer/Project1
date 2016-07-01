@@ -1,37 +1,7 @@
 $(document).ready(function(){
     var controller = new Controller(movies["movies"]);
-    $("#search_button").on('click',search);
+    //$("#search_button").on('click',search);
 });
-
-function search(){
-    var names = ["Sab", "Sam", "Samir", "Samorai", "Sap"];
-    var html = "";
-    var value = $("#field").val(); //get the value of the text field
-    var show=false; //don't show suggestions
-
-    $.each(names, function (i, val) {
-        var start = names[i].toLowerCase().search(value.toLowerCase().trim());
-        if (start != -1) { //if there is a search match
-            html += "<div class='sub_suggestions' data-item='" + names[i] + "' >";
-            html += names[i].substring(0,start)+"<b>"+names[i].substring(start,start+value.length)+"</b>"+names[i].substring(start+value.length,names[i].length);
-            html += "</div>";
-            show=true; //show suggestions
-        }
-    });
-    if(show){
-        $("#suggestions_box").html(html);
-        //get the children of suggestions_box with .sub_suggestions class
-        $("#suggestions_box").children(".sub_suggestions").on('click',function(){
-            var item=$(this).attr('data-item'); //get the data
-            $("#field").val(item); //show it in the field
-            $("#suggestions_box").hide(); //hide the suggestion box
-        });
-        
-        $("#suggestions_box").show();
-    }
-    else
-       $("#suggestions_box").hide();
-}
 
 function Controller(data){
     this.movies = data;
@@ -41,6 +11,8 @@ function Controller(data){
     this.grid_icon="#grid_icon";
     this.list_icon="#list_icon";
     this.combo_box="#combo_box";
+    this.field="#field";
+    this.search_button="#search_button"
     this.movie_template="#movie-template";
     
     //bind some events
@@ -57,9 +29,20 @@ function Controller(data){
         self.sort_movies.call(self);
     };
     
+    var search_movies=function(){
+        self.search.call(self);
+    };
+    
+    var search_click=function(){
+        self.search.call(self);
+        self.search_click.call(self);
+    };
+    
     $(this.grid_icon).on("click", make_grid_function);
     $(this.list_icon).on("click", make_list_function);
     $(this.combo_box).on('change',sort_movies);
+    $(this.field).on('keyup',search_movies);
+    $(this.search_button).on('click',search_click);
     
     this.sort_movies();
 };
@@ -146,5 +129,71 @@ Controller.prototype.adjust_rating=function(){
         }
         
         $("div.rating").eq(i).html(stars);
+    }
+};
+
+Controller.prototype.search=function()
+{
+    var movie_list = this.movies;
+    var movie_search = []; //array for search data
+    var movie_string = ""; // holds movie information for search array
+    var html = ""; //stores the html for suggestions box
+    var value = $("#field").val(); //gets the value of the text box
+    var show=false; //toggles suggestions box
+
+    for(var i=0; i < $("#movies").children().length; i++)
+    {
+        movie_string = movie_list[i].title + ' ';
+        movie_string += '(' + movie_list[i].year + '), ';
+        movie_string += movie_list[i].starring + '; ';
+        movie_string += movie_list[i].description;
+        
+        movie_search.push(movie_string);
+    }
+    
+    $.each(movie_search, function (i, val) {
+        var start = movie_search[i].toLowerCase().search(value.toLowerCase().trim());
+        if (start != -1)
+        { //if there is a search match
+            html += "<div class='sub_suggestions' data-item='" + i + "' >";
+            html += "<b>"+movie_search[i].substring(0, movie_search[i].indexOf(' ('))+"</b>";
+            html += movie_search[i].substring(movie_search[i].indexOf(' ('),movie_search[i].indexOf(')')+1);
+            html += " Starring: "+movie_search[i].substring(movie_search[i].indexOf(')') + 2,movie_search[i].indexOf('; '));
+            html += "</div>";
+            show=true; //show suggestions
+        }
+    });
+    
+    if(show)
+    {
+        $("#suggestions_box").html(html);
+        //get the children of suggestions_box with .sub_suggestions class
+        $("#suggestions_box").children(".sub_suggestions").on('click',function(){
+            var item=parseInt($(this).attr('data-item')); //get the data
+            $("#field").val(movie_list[item].title); //show it in the field
+            $("#suggestions_box").hide(); //hide the suggestion box
+        });
+        
+        $("#suggestions_box").show();
+    }
+    else
+       $("#suggestions_box").hide();
+};
+
+Controller.prototype.search_click=function()
+{
+    $("#suggestions_box").hide();
+    var matches = [];
+    
+    for(var i=0; i < $("#suggestions_box").children().length; i++)
+    {
+        matches.push(parseInt($("div.sub_suggestions").eq(i).attr('data-item')));
+    }
+    
+    $("#movies").children().hide();
+    
+    for(var i=0; i < matches.length; i++)
+    {
+        $("div.movie").eq(matches[i]).show();
     }
 };
