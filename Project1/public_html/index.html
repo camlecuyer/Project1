@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--Project 1, Cameron L'Ecuyer 6/28/16
+<!--Project 1, Cameron L'Ecuyer 7/2/16
 This project creates a one page website that displays a list of movies.
 The user can search for movies, and change the display type for the movies
 list.
@@ -10,21 +10,22 @@ list.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="styles/movies.css">
+        <!--Script holding template for the movies-->
         <script id="movie-template" type="text/html">
             <div class='movie'>
-                <div class='photo_container'>
+                <div class='photo_container'><!--Container for easier positioning-->
                     <img class='photo' src='{{photo}}'>
                     <img class='hd' src='images/HD.png' alt='{{HD}}'>
                 </div>
-                <div class='title_container'>
+                <div class='title_container'><!--Container for easier positioning-->
                     <div class='title'>{{title}}</div>
                     <div class='year'>{{year}}</div>
                 </div>
-                <div class='star_container'>
+                <div class='star_container'><!--Container for easier positioning-->
                     <div class='star_label'>Starring:</div>
                     <div class='starring'>{{starring}}</div>
                 </div>
-                <div class='rate_container'>
+                <div class='rate_container'><!--Container for easier positioning-->
                     <div class='rate_label'>Rating:</div>
                     <div class='rating'>{{rating}}</div>
                 </div>
@@ -37,6 +38,7 @@ list.
         <script src="scripts/movie.js"></script>
     </head>
     <body>
+        <!--Header div holding logo, title, and search bar-->
         <div class="head">
             <img class="logo" alt="logo" title="logo" src="images/movie.png">
             <div class="banner">Rent a Movie</div>
@@ -46,15 +48,20 @@ list.
                 <button id="search_button">Search</button>
             </div>
         </div>
-        <div class='icons'>
-            <label for='combo_box'>Sort By:</label>
-            <select id="combo_box">
-                <option>Year</option>
-                <option>Rating</option>
-            </select>
-            <img id="list_icon" title="list" src="images/list.jpg">
-            <img id="grid_icon" title="grid" src="images/grid_pressed.jpg">
+        <!--Container for icons and movies section-->
+        <div class="data_container">
+            <!--Icons hold the grid and list icons, and sorting box-->
+            <div class='icons'>
+                <label for='combo_box'>Sort By:</label>
+                <select id="combo_box">
+                    <option>Year</option>
+                    <option>Rating</option>
+                </select>
+                <img id="list_icon" title="list" src="images/list.jpg">
+                <img id="grid_icon" title="grid" src="images/grid_pressed.jpg">
+            </div>
+            <!--Container for movies-->
+            <section id="movies" class="grid"></section>
         </div>
-        <section id="movies" class="grid"></section>
     </body>
 </html>

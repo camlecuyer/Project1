@@ -1,21 +1,30 @@
 /*
-
+CSS for Project 1, a movie selection webpage
 */
 /* 
-    Created on : Jun 28, 2016, 1:22:49 PM
+    Last modified on : July 7, 2016
     Author     : CJ
 */
 
-.head, section
+/*removes top margin*/
+body
+{
+    margin: 0px;
+}
+/*sets width for main sections*/
+.head, section, .data_container
 {
     width: 95%;
     min-width: 250px;
 }
-
+/*header section*/
 .head
 {
     background-color: #f2f2f2;
     height: 50px;
+    position: fixed;
+    z-index: 100;
+    margin: 0px;
 }
 
 .head .logo
@@ -41,7 +50,7 @@
     left: 80px;
     width: auto;
 }
-
+/*header search bar styles*/
 .head .search
 {
     position: fixed;
@@ -83,6 +92,11 @@
     background-image: linear-gradient(#92cfde, #0099FF);
 }
 
+.head button:hover
+{
+    cursor: pointer;
+}
+
 .head .suggestions
 {
     position: absolute;
@@ -93,7 +107,7 @@
     background-color: white;
     border-style: solid;
     border-width: 1px;
-    width: 470px;
+    width: 460px;
     overflow: auto;
     display: none;
 }
@@ -107,7 +121,13 @@
 {
     background-color: rgb(245,245,245);
 }
-
+/*main data section*/
+.data_container
+{
+    position: absolute;
+    top: 60px;
+}
+/*icon and sort div section*/
 .icons
 {
     position: relative;
@@ -122,11 +142,12 @@
     float: right;
 }
 
-.icons img:hover
+.icons img:hover, #combo_box:hover
 {
     cursor: pointer;
 }
-
+/*movie display section*/
+/*grid styles*/
 .grid
 {
     position: relative;
@@ -175,6 +196,14 @@
     -o-transition:  height 1s, background-color 0.5s;
 }
 
+.grid .movie .starring, .grid .movie .star_label
+{
+    transition: opacity 0.5s;
+    -webkit-transition:  opacity 0.5s;
+    -moz-transition:  opacity 0.5s;
+    -o-transition:  opacity 0.5s;
+}
+
 .grid .movie .title
 {
     position: absolute;
@@ -209,11 +238,13 @@
     position: absolute;
     left: 6px;
     bottom: 6px;
-    color: transparent;
-    width: 188px;
-    height: 0px;
+    color: white;
+    width: 186px;
+    height: 20px;
     font-size: 12px;
     line-height: 20px;
+    opacity: 0;
+    padding: 0px 0px 0px 2px;
 }
 
 .grid .movie .star_label
@@ -222,23 +253,23 @@
     left: 6px;
     bottom: 6px;
     background-color: rgba(0,0,0,0.7);
-    color: transparent;
-    width: 188px;
-    height: 0px;
+    color: white;
+    width: 186px;
+    height: 40px;
+    line-height: 24px;
     font-weight: bold;
+    opacity: 0;
+    padding: 0px 0px 0px 2px;
 }
 
 .grid .movie:hover .star_label
 {
-    height: 40px;
-    color: white;
-    line-height: 24px;
+    opacity: 1;
 }
 
 .grid .movie:hover .starring
 {
-    height: 20px;
-    color: white;
+    opacity: 1;
 }
 .grid .movie:hover .title
 {
@@ -255,7 +286,7 @@
 {
     display: none;
 }
-
+/*list styles*/
 .list
 {
     position: relative;
