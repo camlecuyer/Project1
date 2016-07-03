@@ -25,6 +25,7 @@ body
     position: fixed;
     z-index: 100;
     margin: 0px;
+    border-bottom: 1px lightgray solid;
 }
 
 .head .logo
